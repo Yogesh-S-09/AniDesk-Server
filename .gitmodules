@@ -1,0 +1,3 @@
+[submodule "server/extensions-tester"]
+	path = server/extensions-tester
+	url = https://github.com/Yogesh-S-09/aniyomi-extensions-tester.git
