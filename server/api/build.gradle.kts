@@ -1,34 +1,24 @@
 plugins {
-    kotlin("jvm") version "1.9.20"
-    id("io.ktor.plugin") version "2.3.6"
-    kotlin("plugin.serialization") version "1.9.20"
+    id("org.springframework.boot") version "3.3.2"
+    id("io.spring.dependency-management") version "1.1.6"
+    kotlin("jvm") version "2.0.21"
+    kotlin("plugin.spring") version "2.0.21"
 }
 
-// ADD THIS BLOCK
-// This explicitly tells this module where to look for dependencies
+group = "com.anidesk"
+version = "0.1.0"
+java.sourceCompatibility = JavaVersion.VERSION_21
+
 repositories {
     mavenCentral()
     maven("https://jitpack.io")
     maven("https://github.com/Claudemirovsky/aniyomi-extensions-tester/raw/android-jar/")
 }
 
-group = "com.anidesk"
-version = "0.0.1"
-
-application {
-    mainClass.set("com.anidesk.ServerKt")
-}
-
 dependencies {
-    // Ktor Server Core
-    implementation("io.ktor:ktor-server-core-jvm")
-    implementation("io.ktor:ktor-server-netty-jvm")
-    implementation("io.ktor:ktor-server-content-negotiation-jvm")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-    // This line depends on artifacts from JitPack
     implementation("aniyomi:anitester")
-
-    // Logging
-    implementation("ch.qos.logback:logback-classic:1.4.11")
 }
